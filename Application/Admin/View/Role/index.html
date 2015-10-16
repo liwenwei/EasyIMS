@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/formui.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/base.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/admin-all.css" />
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery.form.js"></script>
+    <link href="__PUBLIC__/kendeditor/themes/default/default.css" rel="stylesheet" />
+    <script src="__PUBLIC__/kendeditor/kindeditor-min.js"></script>
+    <script src="__PUBLIC__/kendeditor/lang/zh_CN.js"></script>
+    <script src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery.form.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/common.css"/>
+     <style>
+	.zong{
+		width:99%;
+		border:1px solid #ccc;
+		margin:0 auto;
+	}
+	.d_top{
+		width:100%;
+		height:	60px;
+		border-bottom:1px solid #ccc;
+		line-height:60px;
+		font-family:"微软雅黑";
+	}
+	.d_top span{
+		padding-left:15px;
+		padding-right:10px;
+	}
+	.d_top select{
+		width:150px;
+		height:30px;
+		border:1px solid #ccc;
+		font-family:"微软雅黑";
+	}
+	.d_top select option{
+		font-family:"微软雅黑";
+	}
+	.zong ul{
+		width:100%;	
+	}
+	.zong ul li{
+		width:100%;
+		height:90px;
+		border-bottom:1px solid #ccc;	
+	}
+	.zong ul li p{
+		float:left;	
+	}
+	.zong ul li p span{
+		display:block;
+		padding:10px 0 0 10px;	
+	}	
+	 #fd {
+          width:100%;
+    	  height:30px;
+    	  line-height:30px;
+          background-color:#00CC00; font-size:14px;
+    	  top:0;
+    	  position:fixed; 
+    	  z-index:100;
+    	  text-align:center;
+    	  margin:0px;
+    	  color:#FFF;
+    	  display:none;
+        } 
+</style>
+<script>
+function subform(){
+	 var options = {
+   			 type: "POST",
+	            url: "/Admin/Role/insertrole",
+	            success: function (result) {
+	            result=eval("("+result+")");
+	        	$("#fd").css("display","block");
+	        	$("#fd").html(result.data);
+	        	setTimeout("hidetz()",3000);
+	            }
+	        };  
+		$('#ff').ajaxSubmit(options);
+}
+function hidetz(){
+	$("#fd").css("display","none");	
+}
+function getRole(obj){
+	  var gid=$(obj).val();
+	  if(gid=="0"){
+		$("input[type=checkbox]").prop("checked",false);return;
+	  }
+	  var ms="id="+gid;
+	  $.post("/Admin/Role/getadminrole",ms,function(msg){
+		  var msg=eval("("+msg+")");
+		  if(msg.info=="error"){
+			  $("input[type=checkbox]").prop("checked",false);return;
+		  }else{
+			  msg.data=msg.data.split(",");
+			  for(var i=0;i<msg.data.length;i++){
+				 var c=msg.data[i];
+				 var clist=$("input[type=checkbox]");
+				 for(var k=0;k<clist.length;k++){
+					 var name=$(clist[k]).val();
+					 if(name==c){
+						 $(clist[k]).prop("checked",true);
+					 }
+				 }
+			  }
+		  }
+	  });
+}
+</script>
+</head>
+<body>
+    <div id="fd"></div>
+    <div class="alert alert-info">当前位置<b class="tip"></b>权限管理<b class="tip"></b>权限设置</div>
+     <img id="loadtip" src="__PUBLIC__/Admin/Main/img/jd.gif" style="width:100px;margin:0 auto;display:none;margin-bottom:8px"></img>
+    <div id="loadmsg" style="width:100px;margin:0 auto;display:none;margin-bottom:8px;color:red">操作成功</div>
+    <form method="post" id="ff" enctype="multipart/form-data">
+     <div class="zong">
+    	<div class="d_top">
+        	<span>用户组</span>
+            <select name="rolelx" onchange="getRole(this)">
+            	<option value="0">请选择用户组</option>
+                <volist name="list" id="vo">
+                  <option value="{$vo.id}">{$vo.name}</option>
+                </volist>
+            </select>
+        </div>
+        <ul>
+        	<li>
+                <p>
+                 	<span><input type="checkbox" value="constant" name="roles[]"/>系统常量模块</span>
+                </p>
+                 <p>
+                 	<span><input type="checkbox" value="job" name="roles[]"/>人才招聘模块</span>
+                </p>
+                 <p>
+                 	<span><input type="checkbox" value="contactus" name="roles[]"/>联系我们模块</span>
+                </p>
+                 <p>
+                 	<span><input type="checkbox" value="news" name="roles[]"/>新闻资讯模块</span>
+                </p>
+                 <p>
+                 	<span><input type="checkbox" value="case" name="roles[]"/>项目案例模块</span>
+                </p>
+                 <p>
+                 	<span><input type="checkbox" value="achievements" name="roles[]"/>荣誉资质模块</span>
+                </p>
+                 <p>
+                 	<span><input type="checkbox" value="company" name="roles[]"/>公司简介模块</span>
+                </p>
+                <p>
+                 	<span><input type="checkbox" value="staff" name="roles[]"/>员工风采模块</span>
+                </p>
+                <p>
+                 	<span><input type="checkbox" value="culture" name="roles[]"/>企业文化模块</span>
+                </p>
+                <p>
+                 	<span><input type="checkbox" value="speech" name="roles[]"/>院长致辞模块</span>
+                </p>
+                <p>
+                 	<span><input type="checkbox" value="admingl" name="roles[]"/>系统管理员模块</span>
+                </p>
+                <p>
+                 	<span><input type="checkbox" value="role" name="roles[]"/>系统权限模块</span>
+                </p>
+                <p>
+                 	<span><input type="checkbox" value="bander" name="roles[]"/>首页轮播图模块</span>
+                </p>
+            </li>
+        </ul>
+    </div>	
+    <input class="btn" style="margin-top:10px;" id="find" type="button" onclick="subform()" value="授 权" />
+   </form>
+</body>
+</html>

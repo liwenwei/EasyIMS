@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js">
+    </script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="../Styles/admin-all.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/base.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/formui.css" />
+    <script type="text/javascript" src="../Scripts/ChurAlert.min.js?skin=blue">
+    </script>
+    <script type="text/javascript" src="../Scripts/chur-alert.1.0.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="../Styles/chur.css" />
+    <script type="text/javascript">
+        $(function () {
+            $('a').click(function () {
+                var _type = $(this).attr('id');
+                $('body').alert({ type: _type })
+            });
+            $('#info2').click(function () { $('body').alert({ type: 'info', buttons: [{ id: 'yes', name: '确定', callback: function () { alert('确定') } }, { id: 'no', name: '取消', callback: function () { alert('取消') } }] }) });
+            $('i').click(function () { $.dialog({ title: '我的浏览器', content: 'url:http://www.baidu.com', lock: true, okVal: '关了', ok: true, width: 788, height: 504, cancelVal: '叉掉', button: [{ id: 'chur', name: '再来个警告', callback: function () { $('body').alert({ type: 'success' }); } }], cancel: true /*为true等价于function(){}*/ }); });
+            $('b').click(function () { $.dialog({ title: '我不能拖动，我15秒后自动关闭', content: 'url:http://www.e-eegoo.com', fixed: true, drag: false, resize: false, time: 35, width: 788, height: 504 }).max(); })
+            $('.test').click(function () {
+                if (test) {
+                    $.dialog({
+                        id: 'test',
+                        content: 'url:Template/test1.html',
+                        data: $('#test').val()
+                    })
+                }
+            });
+            $('.test2').click(function () {
+                if (test2) {
+                    $.dialog({
+                        id: 'test2',
+                        content: 'url:Template/test1.html',
+                        data: $('#test2').val()
+                    })
+                }
+            })
+        })</script>
+    <style type="text/css">
+        table td {
+            border: 1px solid #ddd;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <table width="100%" height="290">
+        <tr>
+            <td height="34" bgcolor="#CCCCCC">
+                <strong>Function</strong>
+            </td>
+            <td bgcolor="#CCCCCC">
+                <strong>Source</strong>
+            </td>
+            <td bgcolor="#CCCCCC">
+                <strong>Option</strong>
+            </td>
+            <td bgcolor="#CCCCCC">
+                <strong>Remarks</strong>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#efefef">
+                <a class="btn btn-primary" id="primary">权限提示</a>
+            </td>
+            <td bgcolor="#efefef">
+                <pre>
+&lt;a class=&quot;btn btn-primary&quot; id=&quot;primary&quot;&gt;权限提示&lt;/a&gt;
+$('obj').click(function () {
+$('body').alert({
+type: 'primary'
+})
+            })    </pre>
+            </td>
+            <td bgcolor="#efefef">默认参数<pre>
+ type: 'success',
+title: '提示',
+content: '恭喜，操作成功！',
+btntext: '确定',
+modal: true,
+draggabled: false,
+even: 'click'
+buttons:[]</pre>
+            </td>
+            <td bgcolor="#efefef">需要引入chur.min.js / chur.css 调用文件名根据需求自行更改<br />
+                <pre>
+ type: '',       //类型有5种info，success，warning，primary，danger
+title: '',      //标题
+content: '',    //提示文字信息
+btntext: '',    //按钮文字
+modal: false，    //模式，开关灯
+draggable: false //是否可拖动
+even: 'click' //鼠标触发事件
+buttons:[] //多个按钮组</pre>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#efefef">
+                <a class="btn btn-success" id="success">成功提示</a>
+            </td>
+            <td bgcolor="#efefef">&lt;a class=&quot;btn btn-primary&quot; id=&quot;primary&quot;&gt;权限提示&lt;/a&gt;<br />
+                $('obj').click(function () {<br />
+                $('body').alert({<br />
+                type: 'success'<br />
+                })<br />
+                }) </td>
+            <td bgcolor="#efefef">同上</td>
+            <td bgcolor="#efefef">同上</td>
+        </tr>
+        <tr>
+            <td bgcolor="#efefef">
+                <a class="btn btn-warning" id="warning">警告提示</a>
+            </td>
+            <td bgcolor="#efefef">&lt;a class=&quot;btn btn-primary&quot; id=&quot;primary&quot;&gt;权限提示&lt;/a&gt;<br />
+                $('obj').click(function () {<br />
+                $('body').alert({<br />
+                type: 'warning'<br />
+                })<br />
+                }) </td>
+            <td bgcolor="#efefef">同上</td>
+            <td bgcolor="#efefef">同上</td>
+        </tr>
+        <tr>
+            <td bgcolor="#efefef">
+                <a class="btn btn-danger" id="danger">出错提示</a>
+            </td>
+            <td bgcolor="#efefef">&lt;a class=&quot;btn btn-primary&quot; id=&quot;primary&quot;&gt;权限提示&lt;/a&gt;<br />
+                $('obj').click(function () {<br />
+                $('body').alert({<br />
+                type: 'danger'<br />
+                })<br />
+                }) </td>
+            <td bgcolor="#efefef">同上</td>
+            <td bgcolor="#efefef">同上</td>
+        </tr>
+        <tr>
+            <td bgcolor="#efefef">
+                <a class="btn btn-info" id="info2">询问提示</a>
+            </td>
+            <td bgcolor="#efefef">&lt;a class=&quot;btn btn-primary&quot; id=&quot;primary&quot;&gt;权限提示&lt;/a&gt;<br />
+                $('obj')..click(function () {<br />
+                $('body').alert({<br />
+                type: 'info',<br />
+                buttons: [{<br />
+                id: 'yes',<br />
+                name: '确定',<br />
+                callback: function () {<br />
+                alert('确定')<br />
+                }<br />
+                }, {<br />
+                id: 'no',<br />
+                name: '取消',<br />
+                callback: function () {<br />
+                alert('取消')<br />
+                }<br />
+                }]<br />
+                })<br />
+                })</td>
+            <td bgcolor="#efefef">同上</td>
+            <td bgcolor="#efefef">
+                <p>
+                    buttons[
+                </p>
+                <p>
+                    {
+                </p>
+                <p>
+                    id:'' //按钮唯一Id
+                </p>
+                <p>
+                    name:'' //按钮文字
+                </p>
+                <p>
+                    callback:'' //按钮回执事件
+                </p>
+                <p>
+                    }
+                </p>
+                <p>
+                    ]
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#efefef">
+                <i class="btn">窗口调用1</i>
+            </td>
+            <td bgcolor="#efefef">
+                <p>
+                    $('.obj').click(function () {<br />
+                    $.dialog({<br />
+                    title: '我的浏览器',<br />
+                    content: 'url:http://www.baidu.com',<br />
+                    lock: true,<br />
+                    okVal: '关了',<br />
+                    ok: true,<br />
+                    width: 788,<br />
+                    height: 504,<br />
+                    cancelVal: '叉掉',<br />
+                    button: [{<br />
+                    id: 'chur',<br />
+                    name: '再来个警告',<br />
+                    callback: function () {<br />
+                    $('body').alert({<br />
+                    type: 'success'<br />
+                    });
+                </p>
+                <p>
+                    }<br />
+                    }],<br />
+                    cancel: true /*为true等价于function(){}*/<br />
+                    });
+                </p>
+                <pre>&nbsp;
+</pre>
+            </td>
+            <td bgcolor="#efefef">
+                <p>
+                    默认参数
+                </p>
+                <p>
+                    id:null<br />
+                    title: '视窗',<br />
+                    content: ''loading...',<br />
+                    okVal: '确定',<br />
+                    cancelVal: 取消,
+                </p>
+                <p>
+                    min：true
+                </p>
+                <p>
+                    max:true<br />
+                    width: auto,<br />
+                    height:auto,<br />
+                    lock:false,
+                </p>
+                <p>
+                    time:null
+                </p>
+                <p>
+                    resize:true
+                </p>
+                <p>
+                    drag:true
+                </p>
+                <p>
+                    button:null
+                </p>
+            </td>
+            <td bgcolor="#efefef">
+                <p>
+                    需要引入ChurAlert.min.js
+                </p>
+                <p>
+                    id:null //设定对话框唯一标识<br />
+                    title: '视窗',  //窗口标题<br />
+                    content: ''loading...', //窗体内容支持 html
+                    <br />
+                    okVal: '确定', //确定按钮文字<br />
+                    cancelVal: 取消, //取消按钮文字
+                </p>
+                <p>
+                    min：true //是否取用最小化按钮
+                </p>
+                <p>
+                    max:true //是否取用最大化按钮<br />
+                    width: auto, //窗体宽度<br />
+                    height:auto, //窗体高度<br />
+                    lock:false, //是否取用锁屏
+                </p>
+                <p>
+                    time:null //定时关闭窗体 （毫秒）
+                </p>
+                <p>
+                    resize:true //是否取用窗体尺寸控制
+                </p>
+                <p>
+                    drag:true //是否允许拖动
+                </p>
+                <p>
+                    button:null //按钮组 （数组调用方法同上）
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#efefef">
+                <b class="btn">窗口调用2</b>
+            </td>
+            <td bgcolor="#efefef">
+                <pre>
+$('.obj').click(function () {
+$.dialog({
+title: '我不能拖动，我15秒后自动关闭',
+content: 'url:http://www.e-eegoo.com',
+fixed: true,
+drag: false,
+resize: false,
+time: 35,
+width: 788,
+height: 504
+}).max();
+            })</pre>
+            </td>
+            <td bgcolor="#efefef">同上</td>
+            <td bgcolor="#efefef">同上</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center"><b>窗口的传值</b></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="test"  value="传值演示"/><br /><br />在以上框框中输入值点下边按钮传值<br /><br />
+                <span class="btn test">给异步页面赋值</span>
+                </td>
+            <td><pre>
+$('.obj').click(function () {
+if (test) {
+$.dialog({
+id: 'test',
+content: 'url:Template/test1.html',
+data: $('#test&#39;).val()
+})
+}
+})</pre></td>
+            <td>if(test)&nbsp; 判断窗口是否打开，必须指定窗口Id<br />
+                data：为传递参数</td>
+            <td><pre>test1.html 内容---</pre>
+                <pre>var api = frameElement.api;//定义父级框架</pre>
+                <pre>var data = api.data //接收参数</pre>
+                <pre>function(){.....}</pre>
+</td>
+        </tr>
+        <tr>
+            <td><input type="text" id="text2"  value="传值演示"/><br /><br /><br /><br />
+                <span class="btn test2">调用异步页面参数</span>
+                </td>
+            <td><pre>
+$('.obj').click(function () {
+if (test2) {
+$.dialog({
+id: 'test2',
+content: 'url:Template/test1.html',
+data: $('#test2').val()
+})
+}
+})</pre></td>
+            <td>&nbsp;</td>
+            <td><pre>test1.html 内容---</pre>
+                <pre>var api = frameElement.api;//定义父级框架</pre>
+                <pre>var data = api.data //接收参数</pre>
+                <pre>function(){.....}</pre>
+</td>
+        </tr>
+    </table>
+</body>
+</html>

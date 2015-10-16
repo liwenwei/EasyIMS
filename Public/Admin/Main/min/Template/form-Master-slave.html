@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/admin-all.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker();
+
+            $('#list').hide();
+            $('#find').click(function () {
+                $('#list').show();
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <div class="alert alert-info">当前位置<b class="tip"></b>表单风格<b class="tip"></b>主从表单</div>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <td>单据号</td>
+                <td>HS301-2005000020 </td>
+                <td>报销人</td>
+                <td>龙江 </td>
+                <td>部门 </td>
+                <td>CDMA-国内市场部 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="height: 19px">所属项目</td>
+                <td class="auto-style1">CDMA </td>
+                <td style="height: 19px">提交日期</td>
+                <td class="auto-style1">2005-03-01 </td>
+                <td style="height: 19px">摘要 </td>
+                <td class="auto-style1">1 </td>
+            </tr>
+            <tr>
+                <td>折合金额合计 </td>
+                <td>1021.02 </td>
+                <td>审批状态 </td>
+                <td colspan="3">待业务审批 </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6"><a class="btn btn-primary add">单据明细</a>&nbsp;&nbsp;<a class="btn btn-primary add">打印</a></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <td colspan="11">&nbsp;总部借款单据 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tr_title">
+                <td>单据号 </td>
+                <td>报销人部门</td>
+                <td>报销人</td>
+                <td>申请金额</td>
+                <td>审核金额 </td>
+                <td>所属项目 </td>
+                <td>申请人 </td>
+                <td>提交日期 </td>
+                <td>单据类型 </td>
+                <td>审批状态 </td>
+                <td>操作 </td>
+            </tr>
+
+
+            <tr>
+                <td><a href="#">HS301-2005000020 </a></td>
+                <td>CDMA-国内市场部 </td>
+                <td>现金 </td>
+                <td>负责人 </td>
+                <td align="right">0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><a class="btn btn-mini btn-danger">修改</a> <a class="btn btn-mini btn-danger">删除</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

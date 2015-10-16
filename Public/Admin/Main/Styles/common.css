@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+/*================公共样式===============*/
+*{font-size: 14px;
+  margin:0;
+  padding:0;
+  border:0;
+  list-style:none;
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+html,body{
+    width:100%;
+    height:100%;
+    -webkit-text-size-adjust:100%;
+     text-size-adjust:100%;
+     font-family:"Microsoft Yahei","Helvetica Neue","Luxi Sans",
+     "DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,'黑体';/*微软雅黑字体
+     /*font-family:"宋体";*/
+}
+
+.hide{display:none!important;}
+
+html, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size:12px;
+}
+body {
+    margin:0 auto;
+    font-size:12px;
+    font-family:Verdana;
+}
+body,html{height:100%;}
+ul, dl, dd, h1, h2, h3, h4, h5, h6, form, p {
+    padding:0;
+    margin:0;
+}
+ul,li {
+    list-style:none;
+}
+img {
+    border:none;
+}
+a {
+    color:#444;
+    text-decoration:none;
+}
+/*a:hover {
+    color:#f00;
+}*/
+.margin0Auto {
+    margin:0 auto;
+}
+.floatLeft {
+    float:left
+}
+.floatRight {
+    float:right
+}
+/* 兼容的清除浮动 */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    zoom: 1;
+    display: block;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+

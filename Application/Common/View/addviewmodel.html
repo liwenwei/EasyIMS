@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/formui.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/base.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/admin-all.css" />
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery.form.js"></script>
+<link href="__PUBLIC__/kendeditor/themes/default/default.css"
+	rel="stylesheet" />
+<script src="__PUBLIC__/kendeditor/kindeditor.js"></script>
+<script src="__PUBLIC__/kendeditor/lang/zh_CN.js"></script>
+<script src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery.form.js"></script>
+<script type="text/javascript">
+    {$editorstr}
+        function goback(){
+        	window.location.href="/Admin/{$modelname}/index.html";
+        }
+        function subform(){
+        	{$sync}
+        	 showScroll();
+        	 $("#loadtip").css("display","block");
+        	 var options = {
+        			 type: "POST",
+     	            url: "/Admin/{$modelname}/saveadd",
+     	            success: function (result) {
+     	            	result=eval("("+result+")");
+     	            	if(result.info=="success"){
+     	            		 $("#loadtip").css("display","none");
+     		            	 $("#loadmsg").html("操作成功");
+     			 	         $("#loadmsg").css("display","block");
+     			                 setTimeout(function () { 
+     				 	                    $("#loadmsg").css("display","none");
+     				                	    }, 2000);
+     	            	}
+     	            	else{
+     	            		 $("#loadtip").css("display","none");
+     		            	 $("#loadmsg").html("操作失败");
+     			 	         $("#loadmsg").css("display","block");
+     			                 setTimeout(function () { 
+     				 	                    $("#loadmsg").css("display","none");
+     				                	    }, 2000);
+     	            	}
+     	            }
+     	        };  
+        	$('#ff').ajaxSubmit(options);
+        }
+        function showScroll(){
+        	 $("html,body").animate({scrollTop:0},200);	
+        	}
+    </script>
+</head>
+<body>
+	<div class="alert alert-info">
+		当前位置<b class="tip"></b>{$modelchinaname}<b class="tip"></b>新增信息
+	</div>
+	<img id="loadtip" src="__PUBLIC__/Admin/Main/img/jd.gif"
+		style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px"></img>
+	<div id="loadmsg"
+		style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px; color: red">操作成功</div>
+	<form method="post" id="ff" enctype="multipart/form-data">
+		<table class="tbform">
+			<tbody>
+				{$savehtml}
+				<tr>
+					<td colspan="2" align="left"><input class="btn" id="find"
+						type="button" onclick="subform()" value="保存" /> <input
+						class="btn" id="find" type="button" onclick="goback()"
+						value="返回列表页" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

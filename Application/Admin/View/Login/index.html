@@ -1,0 +1,61 @@
+﻿<html>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=10">
+        <title>登录</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="__PUBLIC__/Admin/Login/css/reset.css">
+        <link rel="stylesheet" href="__PUBLIC__/Admin/Login/css/supersized.css">
+        <link rel="stylesheet" href="__PUBLIC__/Admin/Login/css/style.css">
+          <!-- Javascript -->
+        <script src="__PUBLIC__/Admin/Login/js/jquery-1.8.2.min.js" ></script>
+        <script src="__PUBLIC__/Admin/Login/js/scripts.js" ></script>
+
+    </head>
+
+    <body style="background-color:#586683">
+
+        <div class="page-container">
+            <form action="" method="post">
+                <input type="text" id="username" name="username" class="username" placeholder="请输入用户名">
+                <input type="password" id="userpwd" name="password" class="password" placeholder="请输入密码">
+                <button type="button" id="but"  class="submit_button" onclick="gosubmit()">登录</button>
+                <div class="error"><span>+</span></div>
+            </form>
+        </div>
+    </body>
+
+</html>
+<script>
+$(document).ready(function(){
+    $("html").die().live("keydown",function(event){      
+        if(event.keyCode==13){  
+        	gosubmit();
+        }      
+    });    
+});
+ function gosubmit(){
+	 $("#but").html("登陆中....");
+	 var username=$("#username").val();
+	 var userpwd=$("#userpwd").val();
+	 var ms="username="+username+"&userpwd="+userpwd;
+	 $.post("{:U('Admin/Login/checkLogin')}",ms,function(msg){
+		 if(msg=="success"){
+			 window.location.href="{:U('Admin/Index/index')}";
+		 }
+		 else{
+			 $("#but").html("登陆失败"); 
+		 }
+	 });
+	 
+ }
+</script>
+

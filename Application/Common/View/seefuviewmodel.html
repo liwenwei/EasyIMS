@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="trimview" content="1.0.0">
+<title>图片</title>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/themes/icon.css" />
+<script type="text/javascript" src="__PUBLIC__/Admin/Main/outlook.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/jquery.easyui.min.js"></script>
+<style>
+body,html {
+	width: 90%;
+	height: 100%;
+	position: relative;
+}
+
+.tshi {
+	width: 100%;
+	min-height: 100%;
+	height: auto;
+	background: #fff;
+}
+
+.tshi .zong {
+	width: 100%;
+	height: 100%;
+}
+
+.tshi .zong>p {
+	width: 100%;
+	height: 45px;
+	background: #438eb8;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	position: relative;
+}
+
+.tshi .zong>p>img {
+	width: 40px;
+	height: 40px;
+	display: block;
+	position: absolute;
+	left: 5px;
+	top: 6px;
+}
+
+.tshi .zong>ul {
+	width: 100%;
+	height: 100%;
+}
+
+.tshi .zong>ul>li {
+	width: 120px;
+	min-height: 120px;
+	height: auto;
+	float: left;
+	margin-left: 2%;
+	margin-top: 2%;
+}
+
+.tshi .zong>ul>li>span {
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	width: 118px;
+	height: 30px;
+	background: #CCC;
+	border: 1px solid #999;
+	color: #fff;
+	margin-top: 5px;
+}
+
+.tshi .zong>ul>li>img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.back {
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	width: 118px;
+	height: 30px;
+	background: #CCC;
+	border: 1px solid #999;
+	color: #F00;
+	margin-top: 5px;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	margin-left: -59px;
+}
+</style>
+</head>
+
+<body>
+	<div class="tshi">
+		<div class="zong">
+			<ul id="shimg">{$showhtml}
+			</ul>
+		</div>
+	</div>
+	<span class="back" style="cursor: pointer" onclick="goback()">返回</span>
+</body>
+</html>
+<script>
+ function goback(){
+	 window.location.href="/Admin/{$modelname}/index.html";
+ }
+ function delimginfo(obj){
+	var picname=$(obj).attr("name");
+	var id=$(obj).attr("id");
+	var ms="id="+id+"&imagename="+picname;
+	$.post("/Admin/{$modelname}/delimage",ms,function(msg){
+		msg=eval("("+msg+")");
+     	if(msg.info=="success"){ 
+            window.location.href= window.location.href;
+     	}
+	});
+ }
+</script>

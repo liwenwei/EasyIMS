@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title> 
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/admin-all.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/base.css"/>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/formui.css"/>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/tb.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/themes/icon.css" />
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/outlook.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker();
+
+            $('#list').hide();
+            $(document).ready(function(){
+            	 $('#list').show();
+            });
+        })
+        
+        function delinfo(id){
+        	$.messager.confirm('系统提示','您确定要删除吗？',function(result){
+        		if(result){
+        			showScroll();
+        			
+        			var ms="id="+id;
+        			$.post("/Admin/Develop/removeModel",ms,function(msg){
+        				msg=eval("("+msg+")");
+        				if(msg.info=="success"){
+        					$("#loadtip").css("display","none");
+        					$("#loadmsg").html("数据删除成功");
+        					$("#loadmsg").css("display","block");
+        					
+        					setTimeout(function(){
+        						$("#loadmsg").css("display","none");
+        						reloadData();
+        					},2000);
+        				} else{
+               			    $("#loadtip").css("display","none");
+               			    $("#loadmsg").html("数据删除失败");
+               			    $("#loadmsg").css("display","block");
+               			    setTimeout(function () { 
+               			    	$("#loadmsg").css("display","none");
+               			    	}, 2000);
+               			    }
+        				})
+        				}
+        		});
+        }
+        
+        function reloadData(){
+        	var span=$(".manu").find("span");
+        	window.location.href="/Admin/Develop/index/p/"+$(span).html()+".html";
+        }
+        
+        function showScroll(){
+        	$("html,body").animate({scrollTop:0},200);
+        }
+    </script>
+</head>
+<body>
+    <div class="alert alert-info">当前位置<b class="tip"></b>模块开发<b class="tip"></b>模块列表</div>
+    <img id="loadtip" src="__PUBLIC__/Admin/Main/img/jd.gif" style="width:100px;margin:0 auto;display:none;margin-bottom:8px"></img>
+    <div id="loadmsg" style="width:100px;margin:0 auto;display:none;margin-bottom:8px;color:red">操作成功</div>
+     <table class="tbform">
+        <thead>
+            <tr>
+               <td colspan="6" class="auto-style2">&nbsp;
+                <a href="{:U('Admin/Develop/add')}" class="btn btn-mini btn-primary add" style="height:20px;color:#fff">新建模块</a>
+               </td>
+            </tr>
+        </thead>
+    </table>
+    <table class="tb" id="list">
+         <tbody>
+             <tr>
+                <th>模块名称 </th>
+                <th>父模块名称</th>
+                <th>模块功能</th>
+                <th>操作 </th>
+            </tr>
+             <volist name="list" id="vo">
+            <tr>
+                <td>{$vo.subnames}</td>
+                <td>{$vo.modelname}</td>
+                <td>{$vo.subnamefuncs} </td>
+                <td>
+                <!-- <a href="">修改</a> -->
+                <a style="cursor:pointer" onclick="delinfo({$vo.modelid})">删除</a>
+                </td>
+            </tr>
+             </volist>
+         </tbody>
+    </table>
+</body>
+</html>

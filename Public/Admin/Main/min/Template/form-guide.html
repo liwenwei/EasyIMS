@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/admin-all.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript">
+        $(function () {
+            $('#center').hide();
+            $('#bottom').hide();
+            $('.top-next').click(function () {
+                $('#top').hide();
+                $('#center').show();
+            })
+            $('.center-next').click(function () {
+                $('#center').hide();
+                $('#bottom').show();
+            })
+            $('.center-prev').click(function () {
+                $('#center').hide();
+                $('#top').show();
+            })
+            $('.bottom-prev').click(function () {
+                $('#bottom').hide();
+                $('#center').show();
+            })
+        })
+    </script>
+    <style type="text/css">
+        .auto-style1 {
+            height: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert alert-info">当前位置<b class="tip"></b>表单风格<b class="tip"></b>向导</div>
+    <table class="table table-striped table-bordered table-condensed" id="top">
+        <thead>
+            <tr class="tr_detail">
+                <td class="auto-style1">单据号 </td>
+                <td class="auto-style1">报销人部门</td>
+                <td class="auto-style1">报销人</td>
+                <td class="auto-style1">申请金额</td>
+                <td class="auto-style1">审核金额 </td>
+                <td class="auto-style1">所属项目 </td>
+                <td class="auto-style1">申请人 </td>
+                <td class="auto-style1">提交日期 </td>
+                <td class="auto-style1">单据类型 </td>
+                <td class="auto-style1">审批状态 </td>
+                <td class="auto-style1">摘要 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                <td>现金</td>
+                <td>票据 </td>
+                <td>负责人 </td>
+                <td>3009.40</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>产品国内差旅费单据 </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="even">
+                <td><a>HS301-2005000020 </a></td>
+                <td>现金</td>
+                <td>票据 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>产品国内差旅费单据 </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                <td>CDMA-国内市场部 </td>
+                <td>现金 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="even">
+                <td><a>HS301-2005000020 </a></td>
+                <td>银行承兑汇票</td>
+                <td>谭晓松 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                <td>银行存款</td>
+                <td>谭晓松 </td>
+                <td>任务成员 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+             
+            <tr class="tr_pagenumber">
+                <td colspan="100">
+                    <input class="btn btn-inverse top-next" id="find" type="button" value="下一步" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-striped table-bordered table-condensed" id="center">
+        <thead>
+            <tr class="tr_detail">
+                <td>单据号 </td>
+                 <td>报销人</td>
+                <td>申请金额</td>
+                <td>审核金额 </td>
+                <td>所属项目 </td>
+                <td>申请人 </td>
+                <td>提交日期 </td>
+                <td>单据类型 </td>
+                <td>审批状态 </td>
+                <td>摘要 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                 <td>票据 </td>
+                <td>负责人 </td>
+                <td>3009.40</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>产品国内差旅费单据 </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="even">
+                <td class="auto-style1"><a>HS301-2005000020 </a></td>
+                 <td class="auto-style1">票据 </td>
+                <td class="auto-style1">负责人 </td>
+                <td class="auto-style1">0.00</td>
+                <td class="auto-style1"></td>
+                <td class="auto-style1"></td>
+                <td class="auto-style1"></td>
+                <td class="auto-style1">产品国内差旅费单据 </td>
+                <td class="auto-style1"></td>
+                <td class="auto-style1"></td>
+            </tr>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                 <td>现金 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="even">
+                <td><a>HS301-2005000020 </a></td>
+                 <td>谭晓松 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                <td>谭晓松 </td>
+                <td>任务成员 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+             
+            <tr class="tr_pagenumber">
+                <td colspan="100">
+                    <input class="btn btn-inverse center-prev" id="Button1" type="button" value="上一步" />&nbsp;
+                    <input class="btn btn-inverse" id="Button3" type="button" value="保存" />
+                    &nbsp;<input class="btn btn-inverse center-next" id="Button4" type="button" value="下一步" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-striped table-bordered table-condensed" id="bottom">
+        <thead>
+            <tr class="tr_detail">
+                <td>单据号 </td>
+                <td>报销人部门</td>
+                <td>报销人</td>
+                <td>申请金额</td>
+                <td>审核金额 </td>
+                <td>所属项目 </td>
+                <td>申请人 </td>
+                <td>提交日期 </td>
+                <td>单据类型 </td>
+                <td>审批状态 </td>
+                <td>摘要 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                <td>现金</td>
+                <td>票据 </td>
+                <td>负责人 </td>
+                <td>3009.40</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>产品国内差旅费单据 </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="even">
+                <td><a>HS301-2005000020 </a></td>
+                <td>现金</td>
+                <td>票据 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>产品国内差旅费单据 </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                <td>CDMA-国内市场部 </td>
+                <td>现金 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="even">
+                <td><a>HS301-2005000020 </a></td>
+                <td>银行承兑汇票</td>
+                <td>谭晓松 </td>
+                <td>负责人 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><a>HS301-2005000020 </a></td>
+                <td>银行存款</td>
+                <td>谭晓松 </td>
+                <td>任务成员 </td>
+                <td>0.00</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+             
+            <tr class="tr_pagenumber">
+                <td colspan="100">
+                    <input class="btn btn-inverse bottom-prev" id="Button2" type="button" value="上一步" />&nbsp;<input class="btn btn-inverse" id="Button5" type="button" value="保存" /></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/admin-all.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/base.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/bootstrap.min.css" />
+    <script type="text/javascript" src="../Scripts/ChurAlert.min.js?skin=blue"></script>
+    <script type="text/javascript" src="../Scripts/chur-alert.1.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/chur.css" />
+    <script type="text/javascript">
+        $(function () {
+            $('a').click(function () {
+                var _type = $(this).attr('id');
+                $('body').alert({
+                    type: _type
+                })
+            })
+            $('#info2').click(function () {
+                $('body').alert({
+                    type: 'info',
+                    buttons: [{
+                        id: 'yes',
+                        name: '确定',
+                        callback: function () {
+                            alert('确定')
+                        }
+                    }, {
+                        id: 'no',
+                        name: '取消',
+                        callback: function () {
+                            alert('取消')
+                        }
+                    }]
+                })
+            })
+            $('i').click(function () {
+                $.dialog({
+                    title: '我的浏览器',
+                    content: 'url:http://www.baidu.com',
+                    lock: true,
+                    okVal: '关了',
+                    ok: true,
+                    width: 788,
+                    height: 504,
+                    cancelVal: '叉掉',
+                    button: [{
+                        id: 'chur',
+                        name: '再来个警告',
+                        callback: function () {
+                            $('body').alert({
+                                type: 'success'
+                            });
+
+                        }
+                    }],
+                    cancel: true /*为true等价于function(){}*/
+                });
+            })
+            $('b').click(function () {
+                $.dialog({
+                    title: '我不能拖动，我15秒后自动关闭',
+                    content: 'url:http://www.e-eegoo.com',
+                    fixed: true,
+                    drag: false,
+                    resize: false,
+                    time: 35,
+                    width: 788,
+                    height: 504
+                }).max();
+            })
+        })
+    </script>
+</head>
+<body>
+    <p><a class="btn btn-primary btn-large" id="primary">权限提示</a></p>
+    <p><a class="btn btn-success btn-large" id="success">成功提示</a></p>
+    <p><a class="btn btn-warning btn-large" id="warning">警告提示</a></p>
+    <p><a class="btn btn-danger btn-large" id="danger">出错提示</a></p>
+    <p><a class="btn btn-info btn-large" id="info2">询问提示</a></p>
+    <p><i class="btn btn-large">来个窗口</i></p>
+    <p><b class="btn btn-inverse btn-large">再来个窗口</b></p>
+
+</body>
+</html>

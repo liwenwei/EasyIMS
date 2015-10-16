@@ -1,0 +1,99 @@
+﻿body {
+    display: block;
+    background: url(../img/cloud.jpg) repeat 50% 50%;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: fzqt;
+    src: url("font/fzqt.ttf");
+}
+
+@font-face {
+    font-family: vani;
+    src: url("font/Vani.ttf");
+}
+
+.loginmain {
+    z-index: 888;
+    height: 340px;
+    width: 540px;
+    position: absolute;
+    margin-left: -270px;
+    margin-top: -170px;
+    left: 50%;
+    top: 50%;
+    background: #808080;
+    opacity: .3;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: -moz-linear-gradient(left, #F00, #0F0,#00F, #FF0,#0FF, #FF00FF);
+    background: -webkit-linear-gradient(left, #F00, #0F0, #00F, #FF0, #0FF, #FF00FF);
+    background: -o-linear-gradient(left,#F00, #0F0, #00F, #FF0, #0FF, #FF00FF);
+}
+
+.row-fluid {
+    z-index: 889;
+    text-align: center;
+    opacity: .8;
+    height: 320px;
+    width: 520px;
+    position: absolute;
+    margin-left: -260px;
+    margin-top: -160px;
+    left: 50%;
+    top: 50%;
+    background: #FFF;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: -moz-linear-gradient(top, #FFF, #CCC);
+    background: -webkit-linear-gradient(top, #FFF, #CCC);
+    background: -o-linear-gradient(top, #FFF, #CCC);
+}
+
+#clouds {
+    height: 350px;
+    background: url(../img/cloud1.png) no-repeat transparent;
+}
+
+.row-fluid h1 {
+    padding: 25px 0;
+    color: #0b9cd3;
+    font-family: fzqt;
+}
+
+.row-fluid hr {
+    width: 80%;
+    border: none;
+    margin: 10px auto;
+    height: 1px;
+    background: -moz-linear-gradient(left, #CDDBE1, #FFF,#CDDBE1);
+    background: -webkit-linear-gradient(left,#CDDBE1, #FFF,#CDDBE1);
+    background: -o-linear-gradient(left,#CDDBE1, #f00,#CDDBE1);
+}
+
+.row-fluid .tip {
+    color: red;
+}
+
+.pcode {
+    margin-left: -35px;
+}
+
+.code {
+    width: 55px;
+}
+
+.btn {
+    width: 95px;
+}
+
+.imgcode {
+    margin-top: -8px;
+    margin-left: 10px;
+    margin-right: 8px;
+}
+
+input[type="text"] {
+    font-family: vani;
+}

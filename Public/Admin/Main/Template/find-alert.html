@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title> 
+    <link rel="stylesheet" type="text/css" href="../Styles/admin-all.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/base.css"/>
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script> 
+    <script type="text/javascript" src="../Scripts/ChurAlert.min.js?skin=blue"></script>
+	<script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <script type="text/javascript" src="../Scripts/chur-alert.1.0.js"></script>
+    <script type="text/javascript" src="../Scripts/tb.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/formui.css"/>
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker();
+
+            $('#find').click(function () {
+                 $.dialog({
+                    title: '查询结果',
+                    content: 'url:Template/griddatalist.html',
+                    lock: true,
+					width:650,
+					height:450
+            			})
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <div class="alert alert-info">当前位置<b class="tip"></b>查询界面<b class="tip"></b>弹出窗口</div>
+    <table class="tbform">
+        <thead>
+            <tr>
+                <td colspan="6" class="auto-style2">&nbsp;请填写查询条件 </td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td class="tdl">单据号</td>
+                <td>
+                    <div class="input-append">
+                        <input class="ipt" size="16" type="text" /> <a class="btn btn-mini" id="find">查找</a>
+                    </div>
+                </td>
+                <td class="tdl">单据类型</td>
+                <td>
+                    <input id="finishTime"  class="ipt"/></td>
+                <td class="tdl">部门 </td>
+                <td>
+                    <select size="1" name="ENTPdept" class="ipt">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option>  
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdl">提交日期起 </td>
+                <td>
+                    <div class="input-append">
+                        <input class="ipt datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>至<input class="ipt datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </td>
+                <td class="tdl">报销人 </td>
+                <td>
+                    <select size="1" name="select2" class="ipt">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option> 
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select></td>
+                <td class="tdl">所属项目</td>
+                <td>
+                    <select class="ipt"
+                        size="1" name="select3"
+                        s>
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option> 
+                        <option
+                            value="10400">市场中心</option> 
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td class="tdl">本币金额</td>
+                <td>
+                    <div class="input-append">
+                        <input class="ipt" id="Text2" size="16" type="text" /><span class="add-on">$</span>至<input class="ipt" id="Text3" size="16" type="text" /><span class="add-on">$</span>
+                    </div>
+                </td>
+                <td class="tdl">申请人 </td>
+                <td colspan="3">
+                    <input
+                        id="finishTime2" class="ipt"></td>
+            </tr>
+            <tr>
+                <td class="tdl">提交财务审核日期 </td>
+                <td>
+                    <div class="input-append">
+                        <input class="ipt datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>至<input class="ipt datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </td>
+                <td class="tdl">单据状态 </td>
+                <td colspan="3">
+                    <select class="ipt"
+                        size="1" name="select4">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option> 
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select>
+                    至 
+                    <select class="ipt"
+                        size="1" name="select5">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option>  
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

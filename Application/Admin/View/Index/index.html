@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+    
+    <meta charset="utf-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/admin-all.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/base.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Main/Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/index.js"></script>
+</head>
+<body>
+    <div class="warp">
+        <!--头部开始-->
+        <div class="top_c">
+            <div class="top-menu">
+                <ul class="top-menu-nav">
+                   <volist name="TOPLIST" id="vo">
+                      <li><a href="#">{$vo.name}<i class="tip-up"></i></a>
+                        <ul class="kidc">
+                         <volist name="vo.li" id="voo">
+                           <li><b class="tip"></b><a target="Conframe" href="{$voo.url}">{$voo.name}</a></li>
+                         </volist>
+                        </ul>
+                    </li>
+                   </volist>
+                </ul>
+            </div>
+             <div class="top-nav">您好，管理员！&nbsp;&nbsp; <a href="#" onclick="gologin()">安全退出</a></div>
+        </div>
+        <!--头部结束-->
+        <!--左边菜单开始-->
+        <div class="left_c left">
+            <h1>功能菜单</h1>
+            <div class="acc">
+                   <volist name="LEFTLIST" id="vo" >
+                    <div>
+                       <a class="one" onclick="checkthis(this)">{$vo.name}</a>
+                    <ul class="kid">
+                       <volist name="vo.li" id="voo">
+                          <li><b class="tip"></b><a target="Conframe" href="{$voo.url}">{$voo.name}</a></li>
+                       </volist>
+                    </ul>
+                     </div>
+                   </volist>
+            </div>
+
+        </div>
+        <!--左边菜单结束-->
+        <!--右边框架开始-->
+        <div class="right_c">
+            <div class="nav-tip" onclick="javascript:void(0)">&nbsp;</div>
+        </div>
+        <div class="Conframe">
+            <iframe name="Conframe" id="Conframe" src="/Admin/Environment/index.html"></iframe>
+        </div>
+        <!--右边框架结束-->
+
+        <!--底部开始-->
+        <div class="bottom_c">Copyright &copy;2005-2015 EasyIMS Team 版权所有</div>
+        <!--底部结束-->
+    </div>
+</body>
+</html>
+<script>
+ function gologin(){
+	 $.post("/Admin/Login/layout","",function(msg){
+			if(msg=="success"){
+				 window.location.href="{:U('Admin/Login/index')}";
+			}
+		});
+ }
+ function checkthis(obj){
+	var divlist= $(".acc").children("div");
+	for(var i=0;i<divlist.length;i++){
+		var ul=$(divlist[i]).children("ul");
+		$(ul).css("display","none");
+	}
+	$(obj).css("display","block");
+ }
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/formui.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/base.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/admin-all.css" />
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery.form.js"></script>
+<link href="__PUBLIC__/kendeditor/themes/default/default.css"
+	rel="stylesheet" />
+<script src="__PUBLIC__/kendeditor/kindeditor-min.js"></script>
+<script src="__PUBLIC__/kendeditor/lang/zh_CN.js"></script>
+<script src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery.form.js"></script>
+<script id="js1" src="__PUBLIC__/Static/jquery.js"></script>
+<script src="__PUBLIC__/Static/Uploadify/jquery.uploadify-3.1.min.js"></script>
+<link href="__PUBLIC__/Static/Uploadify/uploadify.css" rel="stylesheet">
+<style>
+.btn_style {
+	width: 80px;
+	height: 22px;
+	line-height: 22px;
+	display: block;
+	float: left;
+	color: #3d3d3d;
+	border: 1px solid #a5a5a5;
+	border-radius: 30px;
+	margin-top: 10px;
+	margin-right: 10px;
+	font-size: 12px;
+}
+
+.im1 {
+	padding-top: 3px;
+	padding-left: 17px;
+	padding-right: 3px;
+	display: block;
+	float: left;
+}
+</style>
+</head>
+<body>
+	<div class="alert alert-info">
+		当前位置<b class="tip"></b>%MoudleNameByChinese%<b class="tip"></b>数据导入<b class="tip"></b>上传图片
+	</div>
+	<img id="loadtip" src="__PUBLIC__/Admin/Main/img/jd.gif" style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px"></img>
+	<div id="loadmsg" style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px; color: red">操作成功</div>
+	<form method="post" id="ff" enctype="multipart/form-data">
+		<div class="easyui-layout" fit="true">
+			<div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
+				<table cellpadding=3>
+					<tr>
+						<td>图片：</td>
+						<td><input type="file" name="file_upload" id="file_upload" /></td>
+					</tr>
+				</table>
+			</div>
+			</br> 
+			<input class="btn" id="find" type="button" onclick="gonext()" value="返回列表" />
+		</div>
+	</form>
+</body>
+</html>
+<script>
+	var imageNames = "";
+	$(function() {
+		$('#file_upload').uploadify(
+				{
+					'swf'        : '__PUBLIC__/Static/Uploadify/uploadify.swf',
+					'uploader'   : '/Admin/%MoudleName%/savemorepic',
+					'width'      : 120,
+					'buttonText' : '选择图片',
+					'auto'       : true,
+					'method'     : 'post',
+					'uploadLimit' : 40,
+					'onUploadSuccess' : function(file, data, response) {
+						data = eval("(" + data + ")");
+						if (data.info != "error") {
+							imageNames += data.data + ",";
+						}
+					},
+					'onQueueComplete' : function(data) {
+						if (imageNames == "") {
+							$("#loadtip").css("display", "none");
+							$("#loadmsg").html("上传失败");
+							$("#loadmsg").css("display", "block");
+							/*
+							setTimeout(function() {
+								$("#loadmsg").css("display", "none");
+							}, 2000);
+							*/
+						} else {
+							var ms = "id=" + getUrlParam("id") + "&subimages=" + imageNames;
+							$.post("/Admin/%MoudleName%/insertmopic", ms, function(msg) {});
+							$("#loadtip").css("display", "none");
+							$("#loadmsg").html("上传成功");
+							$("#loadmsg").css("display", "block");
+						}
+					}
+				});
+	});
+	function savepic() {
+		showScroll();
+		$("#loadtip").css("display", "block");
+		$('#file_upload').uploadify('upload', '*');
+	}
+	function clearall() {
+		$('#file_upload').uploadify('cancel', '*');
+	}
+	function showScroll() {
+		$("html,body").animate( { scrollTop : 0 }, 200);
+	}
+	function gonext() {
+		window.location.href = "/Admin/%MoudleName%/index";
+	}
+	function getUrlParam(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg); //匹配目标参数
+		if (r != null)
+			return unescape(r[2]);
+		return null; //返回参数值
+	}
+</script>

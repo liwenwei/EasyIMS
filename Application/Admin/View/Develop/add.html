@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/formui.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/base.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/admin-all.css" />
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery.form.js"></script>
+<script type="text/javascript">
+        $(function () {
+            var _this = $('.list').find('thead');
+            //折叠
+            _this.click(function () {
+                var i = $(this).find('i');
+                if (i.attr('class') == 'tip-down') { i.attr('class', 'tip-up') } else { i.attr('class', 'tip-down') }
+                $(this).parent().find('tbody').toggle();
+            })
+            //添加
+            var _html = '<tr>' + _this.parent().find('.demo').html() + '</tr>';
+            $('.add').click(function () {
+                $(this).parents('.list').find('tbody').append(_html);
+
+            })
+            //删除
+            $('.del').live('click',function () {
+                var _tr = $(this).parents('tr');
+                // alert(_tr.attr('class'))
+                if (_tr.attr('class') != "demo") {
+                    if (confirm("你确定要删除这条数据吗？")) { _tr.remove(); }
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+	<div class="alert alert-info">
+		当前位置<b class="tip"></b>模块开发<b class="tip"></b>新建模块
+	</div>
+	<img id="loadtip" src="__PUBLIC__/Admin/Main/img/jd.gif"
+		style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px"></img>
+	<div id="loadmsg"
+		style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px; color: red">操作成功</div>
+	<form method="post" id="ff" enctype="multipart/form-data">
+		<table class="tbform list">
+			<thead>
+				<tr class="tr">
+					<th colspan="11">新建数据库表<i class="tip-up"></i></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>数据表名称</td>
+					<td><input type="text" name="tablename" class="ipt" /></td>
+					<td>是否在顶部显示</td>
+					<td><select class="ipt" size="1" name="topshow">
+					        <option value="0">否</option>
+							<option value="1">是</option>
+					</select></td>
+					<td>是否在左侧菜单显示</td>
+					<td><select class="ipt" size="1" name="leftshow">
+							<option value="1">是</option>
+							<option value="0">否</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>一级模块名称</td>
+					<th colspan="10"><input type="text" name="yijiname"
+						class="ipt" /></th>
+				</tr>
+				<tr>
+					<td>二级模块名称</td>
+					<th colspan="10"><input type="text" name="erjiname"
+						class="ipt" /></th>
+				</tr>
+				<tr>
+					<td>页面功能</td>
+					<th colspan="10">{$MoudleAction}</th>
+				</tr>
+				<tr>
+					<td colspan="11"><a class="btn btn-mini btn-primary add">添加列</a></td>
+				</tr>
+				<tr>
+					<td>列名</td>
+					<td>数据类型</td>
+					<td>字段长度</td>
+					<td>是否可空</td>
+					<td>设为主键</td>
+					<td>页面显示</td>
+					<td>显示名称</td>
+					<td>关联表名</td>
+					<td>关联显示字段</td>
+					<td>查询表达式</td>
+					<td>&nbsp;操作</td>
+				</tr>
+				<tr class="demo">
+					<td><input type="text" name="colname[]" style="width: 40px;"
+						class="ipt" /></td>
+					<td><select class="ipt" size="1" name="dataType[]">
+					<volist name="dataTypeList" id="voDataType">
+					<option value="{$voDataType}">{$key}</option>
+					</volist>
+					</select></td>
+					<td><input type="text" name="collength[]" style="width: 40px;"
+						class="ipt" /></td>
+					<td><select class="ipt" size="1" name="datanull[]">
+							<option value="0">否</option>
+							<option value="1">是</option>
+					</select></td>
+					<td><select class="ipt" size="1" name="datapr[]">
+							<option value="0">否</option>
+							<option value="1">是</option>
+					</select></td>
+					<td><select class="ipt" size="1" name="pageshow[]">
+							<option value="1">是</option>
+							<option value="0">否</option>
+					</select></td>
+					<td><input type="text" name="pageshowname[]"
+						style="width: 40px;" /></td>
+					<td><select class="ipt" size="1" name="guanliantable[]" onchange="getgl(this)">
+							<option value="0">无</option>
+							<volist name="list" id="vo">
+							<option value="{$vo.id}">{$vo.tablename}</option>
+							</volist>
+					</select></td>
+					<td><select class="ipt" size="1" name="guanlianziduan[]">
+							<option value="0">无</option>
+					</select></td>
+
+					<td><input type="text" name="searchstr[]" style="width: 60px;"
+						value="`desc`='商品'" class="ipt" /></td>
+					<td><a class="btn btn-mini btn-danger del">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="tbform list">
+			<tbody>
+				<tr>
+					<td colspan="6"><a class="btn btn-mini btn-primary"
+						onclick="subform()">确定</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>
+<script>
+ function subform(){
+	 showScroll();
+	 $("#loadtip").css("display","block");
+	 var options = {
+	            type: "POST",
+	            url: "{:U('Admin/Develop/createModel')}",
+	            success: function (result) {
+	            	result=eval("("+result+")");
+	            	if(result.info=="success"){
+	            		 $("#loadtip").css("display","none");
+		            	 $("#loadmsg").html("操作成功");
+			 	         $("#loadmsg").css("display","block");
+			                 setTimeout(function () { 
+				 	                    $("#loadmsg").css("display","none");
+				                	    }, 2000);
+	            	}
+	            	else{
+	            		 $("#loadtip").css("display","none");
+		            	 $("#loadmsg").html("操作失败");
+			 	         $("#loadmsg").css("display","block");
+			                 setTimeout(function () { 
+				 	                    $("#loadmsg").css("display","none");
+				                	    }, 2000);
+	            	}
+	            }
+	        };
+	        // 将options传给ajaxForm  
+	        $('#ff').ajaxSubmit(options);
+ }
+ function showScroll(){
+	 $("html,body").animate({scrollTop:0},200);	
+	}
+ function getgl(obj){
+	 var sel=$(obj).find("option:selected").val();
+	 if(sel==0){
+		  $(obj).parent().next().find("select").val("0");
+	 }
+	 else{
+		 var ms="id="+sel;
+		 $.post("{:U('Admin/Develop/getTableColums')}",ms,function(msg){
+			 msg=eval("("+msg+")");
+			 if(msg.info=="success"){
+				 var htmls="<option value=\"0\">无</option>";
+				 for(var i=0;i<msg.data.length;i++){
+					var option=msg.data[i];
+					var ops=option.split(",");
+					for(var k=0;k<ops.length;k++){
+						 htmls+="<option value=\"%id\">%val</option>";
+						 htmls=htmls.replace("%id",k+1);
+						 htmls=htmls.replace("%val",ops[k]);
+					}
+				 }
+				 $(obj).parent().next().find("select").html(htmls);
+			 }
+		 });
+	 }
+ }
+</script>

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<load href="__PUBLIC__/Admin/Main/page.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/admin-all.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/base.css" />
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-1.7.2.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/Styles/formui.css" />
+<script type="text/javascript" src="__PUBLIC__/Admin/Main/Scripts/tb.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="__PUBLIC__/Admin/Main/themes/icon.css" />
+<script type="text/javascript" src="__PUBLIC__/Admin/Main/outlook.js"></script>
+<script type="text/javascript"
+	src="__PUBLIC__/Admin/Main/jquery.easyui.min.js"></script>
+<script src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+        $(function () {
+        	$('#list').show();
+        })
+        function goadd(){
+        	window.location.href="/Admin/{$modelname}/add.html"
+        }
+        function importData(){
+        	window.location.href="/Admin/{$modelname}/import.html"
+        }
+        function uploadfu(id){
+        	window.location.href="/Admin/{$modelname}/upload?id="+id;
+        }
+        function exportData(){
+        	window.location.href="/Admin/{$modelname}/export.html"
+        }
+        function seefu(id){
+        	window.location.href="/Admin/{$modelname}/seefu/id/"+id+".html";
+        }
+        function updateinfo(id){
+        	window.location.href="/Admin/{$modelname}/update/id/"+id+".html"
+        }
+        function delinfo(id){
+       	 $.messager.confirm('系统提示', '您确定要删除?', function (r) {
+                if (r) {
+               	 showScroll();
+               	 var ms="id="+id;
+                	$.post("/Admin/{$modelname}/delinfo",ms,function(msg){
+                		msg=eval("("+msg+")");
+                		if(msg.info=="success"){
+                			 $("#loadtip").css("display","none");
+        	            	 $("#loadmsg").html("数据删除成功");
+        		 	         $("#loadmsg").css("display","block");
+        		                 setTimeout(function () { 
+        			 	                    $("#loadmsg").css("display","none");
+        			 	                   reloadData();
+        			                	    }, 2000);
+                		}
+                		else{
+                			 $("#loadtip").css("display","none");
+        	            	 $("#loadmsg").html("数据删除失败");
+        		 	         $("#loadmsg").css("display","block");
+        		                 setTimeout(function () { 
+        			 	                    $("#loadmsg").css("display","none");
+        			                	    }, 2000);
+                		}
+                	})	
+                }
+            });
+       }
+        function reloadData(){
+        	var span=$(".manu").find("span");
+        	window.location.href="/Admin/{$modelname}/index/p/"+$(span).html()+".html";
+        }
+        function showScroll(){
+       	 $("html,body").animate({scrollTop:0},200);	
+       	}
+    </script>
+</head>
+<body>
+	<div class="alert alert-info">
+		当前位置<b class="tip"></b>{$modelchinaname}<b class="tip"></b>{$modelsubchinaname}
+	</div>
+	<img id="loadtip" src="__PUBLIC__/Admin/Main/img/jd.gif"
+		style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px"></img>
+	<div id="loadmsg"
+		style="width: 100px; margin: 0 auto; display: none; margin-bottom: 8px; color: red">操作成功</div>
+	<table class="tbform">
+		<tbody>
+
+			<form action="/Admin/{$modelname}/index" method="post">
+				<tr>
+					<td class="tdl" style="width: 70px;">开始时间</td>
+					<td class="detail" style="width: 70px;"><input type="text"
+						name="begintime" class="ipt"
+						onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd ' })" /></td>
+					<td class="tdl" style="width: 70px;">结束时间</td>
+					<td class="detail" style="width: 70px;"><input type="text"
+						name="endtime" class="ipt"
+						onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd ' })" /></td>
+					<td colspan="2" class="detail" style="width: 70px;"><input
+						class="btn" id="find" type="submit" value="搜索" /> {$modelfuncs}</td>
+				</tr>
+			</form>
+		</tbody>
+	</table>
+	<table class="tb" id="list">
+		<tbody>
+			<tr>{$modelcolumschinaname}
+			</tr>
+			{$modelcolumscontext}
+		</tbody>
+	</table>
+	<div class="manu">
+		{$page}
+		<div />
+</body>
+</html>

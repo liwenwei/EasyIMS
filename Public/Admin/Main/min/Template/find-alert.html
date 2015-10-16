@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/admin-all.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker();
+
+            $('#find').click(function () {
+                $('#alert-win').dialog({
+                    width: 650,
+                    height: 400,
+                    buttons: { "关闭": function () { $(this).dialog("close"); } }
+                });
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <div class="alert alert-info">当前位置<b class="tip"></b>查询界面<b class="tip"></b>弹出窗口</div>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <td colspan="6" class="auto-style2">&nbsp;请填写查询条件 </td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>单据号</td>
+                <td>
+                    <div class="input-append">
+                        <input class="span2" size="16" type="text" /><span class="add-on" id="find"><i class="icon-search"></i></span>
+                    </div>
+                </td>
+                <td>单据类型</td>
+                <td>
+                    <input id="finishTime" /></td>
+                <td>部门 </td>
+                <td>
+                    <select size="1" name="ENTPdept">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option>
+                        <option
+                            value="10391">康讯公司</option>
+                        <option
+                            value="10392">网络事业部</option>
+                        <option
+                            value="10393">移动事业部</option>
+                        <option
+                            value="10394">手机事业部</option>
+                        <option
+                            value="10395">中兴通讯（香港）有限公司</option>
+                        <option
+                            value="10396">人事中心</option>
+                        <option
+                            value="10399">财务中心</option>
+                        <option
+                            value="10400">市场中心</option>
+                        <option
+                            value="10401">质企中心</option>
+                        <option
+                            value="10402">技术中心</option>
+                        <option
+                            value="10386">CDMA事业部</option>
+                        <option
+                            value="10387">本部事业部</option>
+                        <option
+                            value="10006">技术中心IC所</option>
+                        <option
+                            value="11005">中兴通讯学院</option>
+                        <option
+                            value="11015">第四营销事业部</option>
+                        <option
+                            value="11153">第五营销事业部</option>
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>提交日期起 </td>
+                <td>
+                    <div class="input-append">
+                        <input class="span2 datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>至<input class="span2 datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </td>
+                <td>报销人 </td>
+                <td>
+                    <select size="1" name="select2">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option>
+                        <option
+                            value="10391">康讯公司</option>
+                        <option
+                            value="10392">网络事业部</option>
+                        <option
+                            value="10393">移动事业部</option>
+                        <option
+                            value="10394">手机事业部</option>
+                        <option
+                            value="10395">中兴通讯（香港）有限公司</option>
+                        <option
+                            value="10396">人事中心</option>
+                        <option
+                            value="10399">财务中心</option>
+                        <option
+                            value="10400">市场中心</option>
+                        <option
+                            value="10401">质企中心</option>
+                        <option
+                            value="10402">技术中心</option>
+                        <option
+                            value="10386">CDMA事业部</option>
+                        <option
+                            value="10387">本部事业部</option>
+                        <option
+                            value="10006">技术中心IC所</option>
+                        <option
+                            value="11005">中兴通讯学院</option>
+                        <option
+                            value="11015">第四营销事业部</option>
+                        <option
+                            value="11153">第五营销事业部</option>
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select></td>
+                <td>所属项目</td>
+                <td>
+                    <select
+                        size="1" name="select3"
+                        s>
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option>
+                        <option
+                            value="10391">康讯公司</option>
+                        <option
+                            value="10392">网络事业部</option>
+                        <option
+                            value="10393">移动事业部</option>
+                        <option
+                            value="10394">手机事业部</option>
+                        <option
+                            value="10395">中兴通讯（香港）有限公司</option>
+                        <option
+                            value="10396">人事中心</option>
+                        <option
+                            value="10399">财务中心</option>
+                        <option
+                            value="10400">市场中心</option>
+                        <option
+                            value="10401">质企中心</option>
+                        <option
+                            value="10402">技术中心</option>
+                        <option
+                            value="10386">CDMA事业部</option>
+                        <option
+                            value="10387">本部事业部</option>
+                        <option
+                            value="10006">技术中心IC所</option>
+                        <option
+                            value="11005">中兴通讯学院</option>
+                        <option
+                            value="11015">第四营销事业部</option>
+                        <option
+                            value="11153">第五营销事业部</option>
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>本币金额</td>
+                <td>
+                    <div class="input-append">
+                        <input class="span2" id="Text2" size="16" type="text" /><span class="add-on">$</span>至<input class="span2" id="Text3" size="16" type="text" /><span class="add-on">$</span>
+                    </div>
+                </td>
+                <td>申请人 </td>
+                <td colspan="3">
+                    <input
+                        id="finishTime2"></td>
+            </tr>
+            <tr>
+                <td>提交财务审核日期 </td>
+                <td>
+                    <div class="input-append">
+                        <input class="span2 datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>至<input class="span2 datepicker" size="16" type="text" /><span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </td>
+                <td>单据状态 </td>
+                <td colspan="3">
+                    <select
+                        size="1" name="select4">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option>
+                        <option
+                            value="10391">康讯公司</option>
+                        <option
+                            value="10392">网络事业部</option>
+                        <option
+                            value="10393">移动事业部</option>
+                        <option
+                            value="10394">手机事业部</option>
+                        <option
+                            value="10395">中兴通讯（香港）有限公司</option>
+                        <option
+                            value="10396">人事中心</option>
+                        <option
+                            value="10399">财务中心</option>
+                        <option
+                            value="10400">市场中心</option>
+                        <option
+                            value="10401">质企中心</option>
+                        <option
+                            value="10402">技术中心</option>
+                        <option
+                            value="10386">CDMA事业部</option>
+                        <option
+                            value="10387">本部事业部</option>
+                        <option
+                            value="10006">技术中心IC所</option>
+                        <option
+                            value="11005">中兴通讯学院</option>
+                        <option
+                            value="11015">第四营销事业部</option>
+                        <option
+                            value="11153">第五营销事业部</option>
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select>
+                    至 
+                    <select
+                        size="1" name="select5">
+                        <option value="10401"></option>
+                        <option value="10388">第二营销事业部</option>
+                        <option
+                            value="10389">第三营销事业部</option>
+                        <option
+                            value="10390">第一营销事业部</option>
+                        <option
+                            value="10391">康讯公司</option>
+                        <option
+                            value="10392">网络事业部</option>
+                        <option
+                            value="10393">移动事业部</option>
+                        <option
+                            value="10394">手机事业部</option>
+                        <option
+                            value="10395">中兴通讯（香港）有限公司</option>
+                        <option
+                            value="10396">人事中心</option>
+                        <option
+                            value="10399">财务中心</option>
+                        <option
+                            value="10400">市场中心</option>
+                        <option
+                            value="10401">质企中心</option>
+                        <option
+                            value="10402">技术中心</option>
+                        <option
+                            value="10386">CDMA事业部</option>
+                        <option
+                            value="10387">本部事业部</option>
+                        <option
+                            value="10006">技术中心IC所</option>
+                        <option
+                            value="11005">中兴通讯学院</option>
+                        <option
+                            value="11015">第四营销事业部</option>
+                        <option
+                            value="11153">第五营销事业部</option>
+                        <option
+                            value="11158">数据事业部</option>
+                        <option
+                            value="11159">IT中心</option>
+                        <option
+                            value="11160">ZTE全球售后服务中心</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="alert-win" title="弹出窗口查询模式" style="display: none;">
+        <iframe style="border: 0; width: 100%; height: 100%;" src="find-alert-win.html"></iframe>
+    </div>
+
+</body>
+</html>
