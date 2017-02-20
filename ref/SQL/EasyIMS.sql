@@ -22,6 +22,22 @@ INSERT INTO `my_model` VALUES ('1', '模块开发', null, '0', '0', '1');
 INSERT INTO `my_model` VALUES ('2', '模块列表', '/Admin/Develop/index', '1', null, null);
 
 -- ----------------------------
+-- Table structure for my_options
+-- ----------------------------
+DROP TABLE IF EXISTS `my_options`;
+CREATE TABLE `my_options` (
+  `option_id` bigint(20) NOT NULL,
+  `option_name` varchar(191) DEFAULT NULL,
+  `option_value` longtext NOT NULL,
+  `autoload` varchar(20) NOT NULL,
+  PRIMARY KEY (`option_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of my_options
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for my_role
 -- ----------------------------
 DROP TABLE IF EXISTS `my_role`;
